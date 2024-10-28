@@ -43,10 +43,8 @@
 											<th>{{ __('Exam') }}</th>
 											<th>{{ __('User') }}</th>
 											<th>{{ __('Value Category') }}</th>
-											<th>{{ __('Grade') }}</th>
 											<th>{{ __('Total Correct') }}</th>
 											<th>{{ __('Total Wrong') }}</th>
-											<th>{{ __('Grade') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Updated At') }}</th>
                                             <th>{{ __('Action') }}</th>
@@ -93,20 +91,12 @@
                     name: 'value_category.name'
                 },
 				{
-                    data: 'grade',
-                    name: 'grade.category_id'
-                },
-				{
                     data: 'total_correct',
                     name: 'total_correct',
                 },
 				{
                     data: 'total_wrong',
                     name: 'total_wrong',
-                },
-				{
-                    data: 'grade',
-                    name: 'grade',
                 },
                 {
                     data: 'created_at',

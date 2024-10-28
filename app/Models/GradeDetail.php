@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class GradeDetail extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
      /**
      * The table associated with the model.
@@ -33,17 +34,22 @@ class GradeDetail extends Model
 
 	public function category()
 	{
-		return $this->belongsTo(\App\Models\Category::class);\t}	
+		return $this->belongsTo(\App\Models\Category::class);
+    }	
 	public function exam()
 	{
-		return $this->belongsTo(\App\Models\Exam::class);\t}	
+		return $this->belongsTo(\App\Models\Exam::class);
+    }	
 	public function user()
 	{
-		return $this->belongsTo(\App\Models\User::class);\t}	
+		return $this->belongsTo(\App\Models\User::class);
+    }	
 	public function value_category()
 	{
-		return $this->belongsTo(\App\Models\ValueCategory::class);\t}	
+		return $this->belongsTo(\App\Models\ValueCategory::class);
+    }	
 	public function grade()
 	{
-		return $this->belongsTo(\App\Models\Grade::class);\t}
+		return $this->belongsTo(\App\Models\Grade::class);
+    }
 }

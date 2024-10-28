@@ -23,26 +23,35 @@ class GradeDetailController extends Controller
      */
     public function index()
     {
+        // $gradeDetails = GradeDetail::with('category:id,name', 'exam:id,title', 'user:id,name', 'value_category:id,name', 'grade:id,category_id')->get();
+        // return json_encode($gradeDetails);
         if (request()->ajax()) {
             $gradeDetails = GradeDetail::with('category:id,name', 'exam:id,title', 'user:id,name', 'value_category:id,name', 'grade:id,category_id');
-
+    
             return DataTables::of($gradeDetails)
                 ->addColumn('category', function ($row) {
                     return $row->category ? $row->category->name : '';
-                })->addColumn('exam', function ($row) {
+                })
+                ->addColumn('exam', function ($row) {
                     return $row->exam ? $row->exam->title : '';
-                })->addColumn('user', function ($row) {
+                })
+                ->addColumn('user', function ($row) {
                     return $row->user ? $row->user->name : '';
-                })->addColumn('value_category', function ($row) {
+                })
+                ->addColumn('value_category', function ($row) {
                     return $row->value_category ? $row->value_category->name : '';
-                })->addColumn('grade', function ($row) {
-                    return $row->grade ? $row->grade->category_id : '';
-                })->addColumn('action', 'grade-details.include.action')
+                })
+                ->addColumn('grade_category', function ($row) {
+                    // Pastikan $row->grade adalah objek sebelum mengakses category_id
+                    return $row->grade && is_object($row->grade) ? $row->grade->category_id : '';
+                })
+                ->addColumn('action', 'grade-details.include.action')
                 ->toJson();
         }
-
+    
         return view('grade-details.index');
     }
+    
 
     /**
      * Show the form for creating a new resource.
